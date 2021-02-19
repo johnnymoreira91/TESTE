@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/admin">Admin Page</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="jumbotron">
+                <h1>This is great</h1>
+                <p>Welcome to Admin Page, I'm using EJS as a template engine</p>
+            </div>
+        </main>
+
+        <h1 class="text-center title-1"> Lista de Usuarios </h1>
+        <h4 class="text-center title-1">Escolha um usuario para enviar um email</h4>
+        <ul>
+            <% userlist.forEach(function(user){ %>
+                <li class="text-center title-1"><a href="mailto:<%= user.email %>">
+                        <%= user.user %>
+                    </a></li>
+                <%})%>
+        </ul>
+
+        <div class="jumbotron" align="center">
+            <table cellpadding="5px" cellspacing="0" class="table" ALIGN=center>
+               <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Ativo/Não Ativo</th>
+                    <th scope="col">Admin</th>
+                   
+                </tr>
+               </thead>
+
+                <tbody>
+                    <% userlist.forEach(function(data) { %>
+                        <tr>
+                          <td><%= data._id %></td>
+                          <td><%= data.name %></td>
+                          <td><%= data.user %></td>
+                          <td><%= data.password %></td>
+                          <td><%= data.active %></td>
+                          <td><%= data.admin %></td>
+                        </tr>
+                     <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="text-center text-muted">© Copyright 2020 The Awesome People</p>
+    </footer>
+</body>
+
+</html>
